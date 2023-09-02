@@ -4,34 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deep</title>
-    <script src="/index.js"></script>
+    <script src="./index.js"></script>
 </head>
 <body>
     <h1>Quiz</h1>
-    <form action="" onsubmit="" style="height: 60px; width: 330px;">
-        <fieldset>
+    <div style="height: 60px; width: 450px;">
+        <fieldset id="tipA">
             <legend> Qual é o tipo de animal?</legend>
         <div>
-            <input type="radio" value="" id="mamifero" name="typeAnimal" >
-            <label for="mamifero">mamifero</label>
+            <input type="radio" value="" id="Mamifero" name="typeAnimal" >
+            <label for="Mamifero">Mamifero</label>
             <input type="radio" value="" id="Aves" name="typeAnimal" >
             <label for="Aves">Aves</label>
             <input type="radio" value="" id="Repteis" name="typeAnimal" >
             <label for="Repteis">Répteis</label>
         </div>
         </fieldset><br>
-        <fieldset>
-            <legend></legend>
+        <fieldset id="CAnimal" style="display: none;">
+            <legend>Qual é a categoria do animal?</legend>
             <div>
-                <input type="radio" value="" id="mamifero" name="typeAnimal" >
-                <label for="mamifero">mamifero</label>
-                <input type="radio" value="" id="quadrupede" name="typeAnimal" >
-                <label for="quadrupede">quadrupede</label>
-                <input type="radio" value="" id="carnivoro" name="typeAnimal" >
-                <label for="carnivoro">carnivoro</label>
+                <input type="radio" value="" id="quadrupedes" name="typeAnimal1" >
+                <label for="quadrupedes">Quadrúpedes</label>
+                <input type="radio" value="" id="bipedes" name="typeAnimal1" >
+                <label for="bipedes">Bípedes</label>
+                <input type="radio" value="" id="voadores" name="typeAnimal1" >
+                <label for="voadores">Voadores</label>
+                <input type="radio" value="" id="aquaticos" name="typeAnimal1" >
+                <label for="aquaticos">Aquáticos</label><!--A-->
             </div>
         </fieldset>
+        <fieldset id="CAnimal2" style="display: none;">
+            <legend>Qual é a categoria do animal?</legend>
+            <div>
+                <input type="radio" value="" id="nvoadores" name="typeAnimal1" >
+                <label for="nvoadores">Não Voadores</label>
+                <input type="radio" value="" id="Nadadoras" name="typeAnimal1" >
+                <label for="Nadadoras">Nadadoras</label>
+                <input type="radio" value="" id="Rapina" name="typeAnimal1" >
+                <label for="Rapina">De Rapina</label>
+            </div>
         </fieldset>
-    </form>
+        <fieldset id="CAnimal3" style="display: none;">
+            <legend>Qual é a categoria do animal?</legend>
+            <div>
+                <input type="radio" value="" id="cCasco" name="typeAnimal2" >
+                <label for="cCasco">Com Casco</label>
+                <input type="radio" value="" id="carnivoros" name="typeAnimal2" >
+                <label for="carnivoros">Carnívoros</label>
+                <input type="radio" value="" id="spatas" name="typeAnimal2" >
+                <label for="spatas">Sem Patas</label>
+            </div>
+        </fieldset>
+        <fieldset id="TypeAnimal" style="display: none;">
+            <legend>Qual é a tipo do animal?</legend>
+            <div>
+                <input type="radio" value="" id="carniv" name="typeAnimal4" >
+                <label for="carniv">Carnivoros</label>
+                <input type="radio" value="" id="herb" name="typeAnimal4" >
+                <label for="herbivoros">Herbivoros</label>
+            </div>
+        </fieldset>
+        <fieldset id="TypeAnimal1" style="display: none;">
+            <legend>Qual é a tipo do animal?</legend>
+            <div>
+                <input type="radio" value="" id="onivoros" name="typeAnimal4" >
+                <label for="onivoros">Onivoros</label>
+                <input type="radio" value="" id="frutivoros" name="typeAnimal4" >
+                <label for="frutivoros">Frutivoros</label>
+            </div>
+        </fieldset>
+        <fieldset id="TypeAnimal2" style="display: none;">
+            <legend>Qual é a tipo do animal?</legend>
+            <div>
+                <input type="radio" value="" id="carniv" name="typeAnimal4" >
+                <label for="carniv">Tropicais</label>
+                <input type="radio" value="" id="herb" name="typeAnimal4" >
+                <label for="herbivoros">Polares</label>
+            </div>
+        </fieldset>
+    </div>
 </body>
 </html>
