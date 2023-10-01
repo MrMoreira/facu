@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const cCasco = document.querySelector('#cCasco')
     const carnivoros = document.querySelector('#carnivoros')
     const spatas = document.querySelector('#spatas')
+    
 
     function verifica1() {
         if (Mamifero.checked) {
@@ -35,8 +36,8 @@ document.addEventListener("DOMContentLoaded", function () {
             TypeAnimal.style.display = 'none';
             CAnimal3.style.display = 'none';
             CAnimal2.style.display = 'none';
-            CAnimal.style.display = 'block';
             result.style.display = 'none';
+            CAnimal.style.display = 'block';
         } else if (Aves.checked) {
             TypeAnimal2.style.display = 'none';
             TypeAnimal1.style.display = 'none';
