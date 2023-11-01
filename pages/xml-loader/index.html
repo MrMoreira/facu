@@ -1,47 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Atualização Automática de Dados XML</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XML</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            // Função para carregar e exibir os dados do arquivo XML
-            function carregarDadosXML() {
-                $.ajax({
-                    type: "GET",
-                    url: "dados.xml",
-                    dataType: "xml",
-                    success: function(xml) {
-                        // Limpar a lista de dados
-                        $("#dados-lista").empty();
-
-                        // Processar os elementos do XML
-                        $(xml).find("dado").each(function() {
-                            var nome = $(this).find("nome").text();
-                            var valor = $(this).find("valor").text();
-
-                            // Adicionar os dados à lista
-                            $("#dados-lista").append("<li>" + nome + ": " + valor + "</li>");
-                        });
-                    },
-                    error: function() {
-                        alert("Erro ao carregar dados do arquivo XML.");
-                    }
-                });
-            }
-
-            // Carregar dados XML quando a página é carregada
-            carregarDadosXML();
-
-            // Configurar um temporizador para atualizar os dados a cada 5 segundos
-            setInterval(carregarDadosXML, 5000);
-        });
-    </script>
 </head>
 <body>
-    <h1>Dados XML Atualizados Automaticamente</h1>
-    <ul id="dados-lista">
-        <!-- Os dados serão exibidos aqui -->
+    <h1>ATT datos</h1>
+    <ul id="data-list">
+
     </ul>
+    <script>
+        function loaderlist() {
+            $.ajax({
+                type: "GET",
+                dataset: "xml",
+                url: "data.xml",
+                success: function(xml){
+                    $("#data-list").empty(); // limpa qualquer informação antes de atualizar
+
+                    $(xml).find("data").each(function(){ //ele busca a coluna dados dentro do arquivo xml
+                        let name = $(this).find("name").text();
+                        let age = $(this).find("age").text();
+                        let address = $(this).find("address").text();
+                        let city = $(this).find("city").text();
+
+                        $("#data-list").append(
+                             "<li>Nome: "+ name + "</li>"+
+                             "<li>Idade: " + age + "</li>"+
+                             "<li>Endereço: "  + address + "</li>" +
+                             "<li>Cidade: " + city + "</li>"+
+                             "<hr>"
+                        );
+                    });
+                },
+                error: function(){
+                    alert("Houve um erro no arquivo XML.");
+                }
+            });
+        }
+
+        loaderlist();
+        setInterval(loaderlist, 2000);
+    </script>
 </body>
 </html>
