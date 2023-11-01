@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dados do XML</title>
+    <!-- Inclua a biblioteca jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <h1>Dados do XML</h1>
     <p>Nome: <span id="name"></span></p>
     <p>Idade: <span id="age"></span></p>
     <script>
-        $(document).ready(function(){
+        // Função para carregar e exibir os dados do arquivo XML
+        function carregarDadosXML() {
             $.ajax({
                 type: "GET",
-                url: "data.xml",
+                url: "data.xml", // Altere o nome do arquivo XML, se necessário
                 dataType: "xml",
                 success: function(xml) {
                     const name = $(xml).find("name").text();
@@ -26,8 +29,14 @@
                     alert("Erro ao carregar o arquivo XML.");
                 }
             });
-        XMLfiles()
-        setInterval(XMLfiles, 5000);
+        }
+
+        // Chame a função para carregar os dados XML quando o documento estiver pronto
+        $(document).ready(function(){
+            carregarDadosXML();
+
+            // Configurar um temporizador para atualizar os dados a cada 5 segundos
+            setInterval(carregarDadosXML, 5000);
         });
     </script>
 </body>
