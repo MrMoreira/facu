@@ -6,6 +6,29 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello World!</h1>
+    <h1>Dados do XML</h1>
+    <p>Nome: <span id="name"></span></p>
+    <p>Idade: <span id="age"></span></p>
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                type: "GET",
+                url: "data.xml",
+                dataType: "xml",
+                success: function(xml) {
+                    const name = $(xml).find("name").text();
+                    const age = $(xml).find("age").text();
+
+                    $("#name").text(name);
+                    $("#age").text(age);
+                },
+                error: function() {
+                    alert("Erro ao carregar o arquivo XML.");
+                }
+            });
+        XMLfiles()
+        setInterval(XMLfiles, 5000);
+        });
+    </script>
 </body>
 </html>
