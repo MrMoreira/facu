@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XML</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>ATT datos</h1>
+    <ul id="data-list">
+
+    </ul>
+    <script>
+        function loaderlist() {
+            $.ajax({
+                type: "GET",
+                dataset: "json",
+                url: "data.json",
+                cache: false,
+                success: function(data){
+                    $("#data-list").empty(); // limpa qualquer informação antes de atualizar
+
+                    $("#data-list").append(
+                        "<li>Nome: "+ data.name + "</li>"+
+                        "<li>Idade: " + data.age + "</li>"+
+                        "<li>Endereço: "  + data.address + "</li>" +
+                        "<li>Cidade: " + data.city + "</li>"+
+                        "<hr>"
+                    );
+            
+                },
+                error: function(xhr, status, error){
+                    console.error("Erro ao carregar dados do arquivo JSON: " + error);
+                }
+            });
+        }
+
+        loaderlist();
+        setInterval(loaderlist, 2000);
+    </script>
+</body>
+</html>
