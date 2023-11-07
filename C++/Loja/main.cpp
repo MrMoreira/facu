@@ -1,5 +1,7 @@
 #include <iostream>
 #include <fstream>
+#include <cstdio>
+#include <string>
 using namespace std;
 
 FILE *PontProdutos;//declara√ß√£o do ponteiro para o arquivo produtos
@@ -20,12 +22,12 @@ typedef struct {
 }PLoja;
 
 typedef struct{
-    string nome{50}; //nome do cliente  
+    string nome[50]; //nome do cliente  
     string sobrenome[50]; //sobrenome do cliente
     string endereco[50]; //endereco do cliente
-    int numero[50]; //numero da casa do cliente
+    string numero[50]; //numero da casa do cliente
     string telefone[50]; //telefone do cliente
-    int codigo[50]; //codigo do cliente
+    string codigo[50]; //codigo do cliente
 
 }Clients;
 
@@ -33,7 +35,7 @@ typedef struct {
     string nome[50]; //nome do cliente
     string endereco[50]; //endereco do cliente
     string telefone[50]; //telefone do cliente
-    int codigo[50]; //codigo do cliente
+    string codigo[50]; //codigo do cliente
 }PCliente;
 
 typedef struct {
@@ -57,7 +59,7 @@ void menu(int opcao){
     cout << "4 - Listar Fornecedores" << endl;
     cout << "5 - Listar Produtos" << endl;
     cout << "6 - Listar Vendas" << endl;
-    cout << "7 - Sair" << endl;
+    cout << "7 - Leitura Teste" << endl;
     cin >> opcao;
     switch (opcao){
     case 1:
@@ -78,7 +80,7 @@ void menu(int opcao){
         cout << "teste opcao 6";
         break;
     case 7:
-        cout << "teste opcao 7";
+    	void leituratest();
         break;
     default:
         break;
@@ -124,50 +126,75 @@ void CadastroCliente(){
 
 void CadastroFornecedor() {
     system("cls");
-    cout << " -------------------------------------" << endl;
-    cout << " **** DIGITE OS DADOS DO FORNECEDOR ****" << endl;
-    cout << " -------------------------------------" << endl;
+    cout << " -------------------------------------" << std::endl;
+    cout << " **** DIGITE OS DADOS DO FORNECEDOR ****" << std::endl;
+    cout << " -------------------------------------" << std::endl;
 
     Fornecedor fornecedor;
     long int cod;
     char op;
 
-    do {
-        cout << "Codigo: ";
-        cin >> cod;
-        // Voc√™ pode adicionar sua fun√ß√£o de busca aqui para verificar se o fornecedor j√° existe
+    FILE* arquivoFornecedor = fopen("Fornecedores.mr", "ab"); // Abra o arquivo para anexar
 
-        // Se o fornecedor n√£o existir, permita o cadastro
-        fornecedor.codigo = cod;
+    if (arquivoFornecedor != NULL) {
+        do {
+            cout << "Codigo: ";
+            cin >> cod;
 
-        cin.ignore();
-        cout << " Nome: ";
-        getline(cin, fornecedor.nome);
+            // VocÍ pode adicionar sua funÁ„o de busca aqui para verificar se o fornecedor j· existe
 
-        cout << " Empresa: ";
-        getline(cin, fornecedor.empresa);
+            // Se o fornecedor n„o existir, permita o cadastro
+            fornecedor.codigo = cod;
 
-        cout << "\n CONFIRMA CADASTRO? - <S> para confirmar: ";
-        cin >> op;
+            cin.ignore();
+            cout << " Nome: ";
+            getline(cin, fornecedor.nome);
 
-        if (toupper(op) == 'S') {
-            ofstream arquivoFornecedor("Fornecedores.txt", ios::out | ios::app);
+            cout << " Empresa: ";
+            getline(cin, fornecedor.empresa);
 
-            if (arquivoFornecedor.is_open()) {
-                arquivoFornecedor << fornecedor.codigo << "||" << fornecedor.nome << "||" << fornecedor.empresa << "||" << endl;
-            } else {
-                cout << "Erro ao abrir o arquivo" << endl;
+            cout << "\n CONFIRMA CADASTRO? - <S> para confirmar: ";
+            cin >> op;
+
+            if (toupper(op) == 'S') {
+                // Use fwrite para escrever os dados no arquivo
+                int al = fornecedor.codigo;
+                //string linha = parse.str(fornecedor.codigo)+ "||" + fornecedor.nome + "||" + fornecedor.empresa + "||\n";
+               	//fwrite(linha.c_str(), sizeof(char), linha.size(), arquivoFornecedor);
+               	fwrite(&fornecedor, sizeof(Fornecedor), 1, arquivoFornecedor);
+
+                cout << "Fornecedor cadastrado com sucesso!" << std::endl;
             }
 
-            arquivoFornecedor.close();
+            cout << "ADICIONAR OUTRO FORNECEDOR? - <S> para adicionar: ";
+            cin >> op;
+        } while (toupper(op) == 'S');
 
-            cout << "Fornecedor cadastrado com sucesso!" << endl;
-        }
-
-        cout << "ADICIONAR OUTRO FORNECEDOR? - <S> para adicionar: ";
-        cin >> op;
-    } while (toupper(op) == 'S');
+        fclose(arquivoFornecedor); // Feche o arquivo quando terminar
+    } else {
+        cerr << "Erro ao abrir o arquivo" << endl;
+    }
 }
+
+
+void leituratest(){
+	Fornecedor fornecedor;
+	FILE* arqFornecedor = fopen("Fornecedores.mr", "ab");
+	if (arqFornecedor != null) {
+		cout << "on";
+		while (fread(&fornecedor, sizeof(Fornecedor), 1, arqFornecedor) == 1){
+		cout << "CÛdigo: " << fornecedor.codigo << endl;
+        cout << "Nome: " << fornecedor.nome << std::endl;
+        cout << "Empresa: " << fornecedor.empresa << std::endl;
+        cout << "------------------------------------" << std::endl;
+		}
+    fclose(arqFornecedor); // N„o se esqueÁa de fechar o arquivo quando terminar.
+	} else {
+    // A abertura do arquivo falhou.
+    cerr << "Erro ao abrir o arquivo" << std::endl;
+	}
+}
+
 
 int main()
 {
