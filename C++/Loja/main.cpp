@@ -44,7 +44,7 @@ typedef struct {
     int codigo;
 } Fornecedor;
 
-
+void ListarFornecedores();
 void CadastroCliente();
 void CadastroFornecedor();
 
@@ -72,7 +72,7 @@ void menu(int opcao){
         CadastroFornecedor();
         break;
     case 4:
-        cout << "teste opcao 4";
+        ListarFornecedores();
         break;
     case 5:
         break;
@@ -80,7 +80,6 @@ void menu(int opcao){
         cout << "teste opcao 6";
         break;
     case 7:
-    	void leituratest();
         break;
     default:
         break;
@@ -134,18 +133,14 @@ void CadastroFornecedor() {
     long int cod;
     char op;
 
-    FILE* arquivoFornecedor = fopen("Fornecedores.mr", "ab"); // Abra o arquivo para anexar
+    FILE* arquivoFornecedor = fopen("Fornecedores.mr", "a"); // Abra o arquivo para anexar
 
     if (arquivoFornecedor != NULL) {
         do {
             cout << "Codigo: ";
             cin >> cod;
-
-            // Você pode adicionar sua função de busca aqui para verificar se o fornecedor já existe
-
-            // Se o fornecedor não existir, permita o cadastro
+            // Se o fornecedor nao existir, permita o cadastro
             fornecedor.codigo = cod;
-
             cin.ignore();
             cout << " Nome: ";
             getline(cin, fornecedor.nome);
@@ -158,9 +153,6 @@ void CadastroFornecedor() {
 
             if (toupper(op) == 'S') {
                 // Use fwrite para escrever os dados no arquivo
-                int al = fornecedor.codigo;
-                //string linha = parse.str(fornecedor.codigo)+ "||" + fornecedor.nome + "||" + fornecedor.empresa + "||\n";
-               	//fwrite(linha.c_str(), sizeof(char), linha.size(), arquivoFornecedor);
                	fwrite(&fornecedor, sizeof(Fornecedor), 1, arquivoFornecedor);
 
                 cout << "Fornecedor cadastrado com sucesso!" << std::endl;
@@ -177,21 +169,21 @@ void CadastroFornecedor() {
 }
 
 
-void leituratest(){
+void ListarFornecedores(){
 	Fornecedor fornecedor;
-	FILE* arqFornecedor = fopen("Fornecedores.mr", "ab");
-	if (arqFornecedor != null) {
-		cout << "on";
+	FILE* arqFornecedor = fopen("Fornecedores.mr", "r");
+	if (arqFornecedor != NULL) {
+		cout << "on" << endl;
 		while (fread(&fornecedor, sizeof(Fornecedor), 1, arqFornecedor) == 1){
-		cout << "Código: " << fornecedor.codigo << endl;
-        cout << "Nome: " << fornecedor.nome << std::endl;
-        cout << "Empresa: " << fornecedor.empresa << std::endl;
-        cout << "------------------------------------" << std::endl;
+		cout << "Codigo: " << fornecedor.codigo << endl;
+        cout << "Nome: " << fornecedor.nome << endl;
+        cout << "Empresa: " << fornecedor.empresa << endl;
+        cout << "------------------------------------" << endl;
 		}
-    fclose(arqFornecedor); // Não se esqueça de fechar o arquivo quando terminar.
+    fclose(arqFornecedor); // Nï¿½o se esqueï¿½a de fechar o arquivo quando terminar.
 	} else {
     // A abertura do arquivo falhou.
-    cerr << "Erro ao abrir o arquivo" << std::endl;
+    cerr << "Erro ao abrir o arquivo" << endl;
 	}
 }
 
