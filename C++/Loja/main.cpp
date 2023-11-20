@@ -22,7 +22,7 @@ typedef struct {
 typedef struct {
     string nome; //nome do cliente
     string endereco; //endereco do cliente
-    string telefone; //telefone do cliente
+    int telefone; //telefone do cliente
     int codigo; //codigo do cliente
 }PCliente;
 
@@ -32,6 +32,7 @@ typedef struct {
     int codigo; //codigo do fornecedor
 } Fornecedor;
 
+void ClientList();
 void ListarFornecedores();
 void CadastroCliente();
 void CadastroFornecedor();
@@ -48,7 +49,8 @@ void menu(int opcao){
     cout << "4 - Listar Fornecedores" << endl;
     cout << "5 - Listar Produtos" << endl;
     cout << "6 - Listar Vendas" << endl;
-    cout << "7 - Leitura Teste" << endl;
+    cout << "7 - Listar Clientes" << endl;
+    cout << "8 - Sair" << endl;
     cin >> opcao;
     switch (opcao){
     case 1:
@@ -69,13 +71,12 @@ void menu(int opcao){
         cout << "teste opcao 6";
         break;
     case 7:
+        ClientList();
         break;
     default:
         break;
     }
 }
-
-
 
 void CadastroCliente() {
     system("cls");
@@ -86,6 +87,7 @@ void CadastroCliente() {
 
     PCliente clients;
     long int cod;
+    int tell;
     char op;
 
     FILE* arqClient = fopen("clients.mr", "a"); // Abra o arquivo para anexar
@@ -106,7 +108,10 @@ void CadastroCliente() {
             getline(cin, clients.endereco);
 
             cout << " Telefone: ";
-            getline(cin, clients.telefone);
+            cin >> tell;
+            clients.telefone = tell;
+            cin.ignore();
+            //getline(cin, clients.telefone);
 
             cout << "\n CONFIRMA CADASTRO? - <S> para confirmar: ";
             cin >> op;
@@ -194,6 +199,35 @@ void ListarFornecedores(){
 	}
 }
 
+void ClientList(){
+	PCliente clients;
+	FILE* arqClients = fopen("clients.mr", "r");
+	if (arqClients != NULL) {
+		cout << "__________________________________________" << endl;
+        cout << "|                                        |" << endl;
+        cout << "|            LISTAR CLIENTES             |" << endl;
+        cout << "|________________________________________|" << endl;
+        cout << "\n"; //quebra 2 linhas
+		while (fread(&clients, sizeof(clients), 1, arqClients) == 1){
+        cout << "_______________________________________" << endl;
+		cout << "Codigo: " << clients.codigo << endl;
+        cout << "Nome: " << clients.nome << endl;
+        cout << "Endereco: " << clients.endereco << endl;
+        cout << "Telefone: " << clients.telefone << endl;
+        cout << "_______________________________________" << endl;
+		}
+    /*
+    string nome; //nome do cliente
+    string endereco; //endereco do cliente
+    string telefone; //telefone do cliente
+    int codigo; //codigo do cliente
+    */
+    fclose(arqClients); // N�o se esque�a de fechar o arquivo quando terminar.
+	} else {
+    // A abertura do arquivo falhou.
+    cerr << "Erro ao abrir o arquivo" << endl;
+	}
+}
 
 int main()
 {
