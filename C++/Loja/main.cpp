@@ -1,14 +1,12 @@
 #include <iostream>
 #include <cstdio>
+#include <iomanip>
+#include <iomanip>
 using namespace std;
 
 FILE *PontProdutos;//declaração do ponteiro para o arquivo produtos
 FILE *PontFornecedor;//declaração do ponteiro para o arquivo fornecedor
 
-typedef struct {
-    int dia,mes,ano; //dia, mes e ano
-    int hora,min,seg; //hora, minuto e segundo
-}reg_data;
 
 typedef struct {
     string loja; //nome da loja
@@ -41,11 +39,23 @@ typedef struct {
     int codigoFornecedor; //codigo do fornecedor
 } Produto;
 
+typedef struct {
+    int codigo; //codigo da venda
+    int codigoProduto; //codigo do produto
+    int codigoCliente; //codigo do cliente
+    int quantidade; //quantidade de produtos
+    float preco; //preco do produto
+} Venda;
+
+void sellList();
+void CadastroVenda();
+void ProductList();
 void CadastroProduct();
 void ClientList();
 void ListarFornecedores();
 void CadastroCliente();
 void CadastroFornecedor();
+
 
 void menu(int opcao){
     cout << "_______________________________________" << endl;
@@ -56,11 +66,12 @@ void menu(int opcao){
     cout << "1 - Cadastrar Cliente" << endl;
     cout << "2 - Cadastrar Produto" << endl;
     cout << "3 - Cadastrar Fornecedor" << endl;
-    cout << "4 - Listar Fornecedores" << endl;
-    cout << "5 - Listar Produtos" << endl;
-    cout << "6 - Listar Vendas" << endl;
-    cout << "7 - Listar Clientes" << endl;
-    cout << "8 - Sair" << endl;
+    cout << "4 - Cadastrar Venda" << endl;
+    cout << "5 - Listar Fornecedores" << endl;
+    cout << "6 - Listar Produtos" << endl;
+    cout << "7 - Listar Vendas" << endl;
+    cout << "8 - Listar Clientes" << endl;
+    cout << "9 - Sair" << endl;
     cin >> opcao;
     switch (opcao){
     case 1:
@@ -73,14 +84,18 @@ void menu(int opcao){
         CadastroFornecedor();
         break;
     case 4:
-        ListarFornecedores();
+         CadastroVenda();
         break;
     case 5:
+        ListarFornecedores();
         break;
     case 6:
-        cout << "teste opcao 6";
+        ProductList();
         break;
     case 7:
+        sellList();
+        break;
+    case 8:
         ClientList();
         break;
     default:
@@ -244,22 +259,13 @@ void CadastroProduct() {
     Produto products;
     long int cod;
     int pV, pC, codF, qtd;
+    string nm;
     char op;
 
     FILE* arqProduct = fopen("products.mr", "a"); // Abra o arquivo para anexar
 
     if (arqProduct != NULL) {
         do {
-
-
-            /*tydef struct {
-            int codigo; //codigo do produto
-            string nome; //nome do produto
-            int quantidade; //quantidade de produtos
-            float precoV; //preco do produto de venda
-            float precoC; //preco do produto de compra
-            int codigoFornecedor; //codigo do fornecedor
-            } Produto;*/
 
             cout << "Codigo: ";
             cin >> cod;
@@ -268,23 +274,29 @@ void CadastroProduct() {
             cin.ignore();
 
             cout << " Nome: ";
-            getline(cin, products.nome);
+            cin >> nm;
+            products.nome = nm;
+            cin.ignore();
 
             cout << " Quantidade: ";
             cin >> qtd;
             products.quantidade = qtd;
+            cin.ignore();
             
             cout << " Preco de Venda: ";
             cin >> pV;
             products.precoV = pV;
+            cin.ignore();
 
             cout << " Preco de Compra: ";
             cin >> pC;
             products.precoC = pC;
+            cin.ignore();
 
             cout << " Codigo do Fornecedor: ";
             cin >> codF;
             products.codigoFornecedor = codF;
+            cin.ignore();
 
             cout << "\n CONFIRMA CADASTRO? - <S> para confirmar: ";
             cin >> op;
@@ -309,23 +321,119 @@ void CadastroProduct() {
 
 void ProductList(){
 
-	PCliente clients;
-	FILE* arqClients = fopen("clients.mr", "r");
-	if (arqClients != NULL) {
+	Produto products;
+	FILE* arqProdut = fopen("products.mr", "r");
+	if (arqProdut != NULL) {
 		cout << "__________________________________________" << endl;
         cout << "|                                        |" << endl;
         cout << "|            LISTAR PRODUTOS             |" << endl;
         cout << "|________________________________________|" << endl;
         cout << "\n"; //quebra 2 linhas
-		while (fread(&clients, sizeof(clients), 1, arqClients) == 1){
-		cout << "Codigo: " << clients.codigo << endl;
-        cout << "Nome: " << clients.nome << endl;
-        cout << "Endereco: " << clients.endereco << endl;
-        cout << "Telefone: " << clients.telefone << endl;
+        cout << setw(10) << "| CODIGO |" << setw(10) << " NOME  |" << setw(10) << " QUANTIDADE |" << setw(10) << " PRECO DE VENDA |" << setw(10) << " PRECO DE COMPRA |" << setw(10) << " CODIGO DO FORNECEDOR |" << endl;
+        cout << "___________________________________________________________________________________________________________________________" << endl;
+		while (fread(&products, sizeof(Produto), 1, arqProdut) == 1){
+		/*cout << "Codigo: " << products.codigo << endl;
+        cout << "Nome: " << products.nome << endl;
+        cout << "Quantidade: " << products.quantidade << endl;
+        cout << "Preco de Venda: " << products.precoV << endl;
+        cout << "Preco de Compra: " << products.precoC << endl;
+        cout << "Codigo do Fornecedor: " << products.codigoFornecedor << endl;
         cout << "_______________________________________" << endl;
+        //cout << "| CODIGO | NOME | QUANTIDADE | PRECO DE VENDA | PRECO DE COMPRA | CODIGO DO FORNECEDOR |" << endl;*/
+        cout << setw(10) << products.codigo << setw(10) << products.nome << setw(10) << products.quantidade << setw(10) << products.precoV << setw(10) << products.precoC << setw(10) << products.codigoFornecedor << endl;
 		}
 
-    fclose(arqClients); // N�o se esque�a de fechar o arquivo quando terminar.
+    fclose(arqProdut); // N�o se esque�a de fechar o arquivo quando terminar.
+	} else {
+    // A abertura do arquivo falhou.
+    cerr << "Erro ao abrir o arquivo" << endl;
+	}
+}
+
+void CadastroVenda() {
+    system("cls");
+    cout << "__________________________________________" << endl;
+    cout << "|                                        |" << endl;
+    cout << "|           CADASTRAR VENDAS             |" << endl;
+    cout << "|________________________________________|" << endl;
+
+    Venda sell;
+    long int cod;
+    int p, codP,CodC, qtd;
+    string nm;
+    char op;
+
+    FILE* arqSell = fopen("sell.mr", "a"); // Abra o arquivo para anexar
+
+    if (arqSell != NULL) {
+        do {
+
+            cout << "Codigo: ";
+            cin >> cod;
+            // Se o fornecedor nao existir, permita o cadastro
+            sell.codigo = cod;
+            cin.ignore();
+
+            cout << " Codigo do Produto: ";
+            cin >> codP;
+            // Se o fornecedor nao existir, permita o cadastro
+            sell.codigoProduto = cod;
+            cin.ignore();
+
+            cout << " Codigo do Cliente: ";
+            cin >> CodC;
+            // Se o fornecedor nao existir, permita o cadastro
+            sell.codigoCliente = CodC;
+            cin.ignore();
+
+            cout << " Quantidade: ";
+            cin >> qtd;
+            sell.quantidade = qtd;
+            cin.ignore();
+
+            cout << " Preco: ";
+            cin >> p;
+            sell.preco = p;
+            
+
+            cout << "\n CONFIRMA CADASTRO? - <S> para confirmar: ";
+            cin >> op;
+
+            if (toupper(op) == 'S') {
+                // Use fwrite para escrever os dados no arquivo
+               	fwrite(&sell, sizeof(Venda), 1, arqSell);
+
+                cout << "Fornecedor cadastrado com sucesso!" << endl;
+            }
+
+            cout << "ADICIONAR OUTRO FORNECEDOR? - <S> para adicionar: ";
+            cin >> op;
+        } while (toupper(op) == 'S');
+
+        fclose(arqSell); // Feche o arquivo quando terminar
+        menu(0);
+    } else {
+        cerr << "Erro ao abrir o arquivo" << endl;
+    }
+}
+
+void sellList(){
+
+	Venda sell;
+	FILE* arqSell = fopen("sell.mr", "r");
+	if (arqSell != NULL) {
+		cout << "__________________________________________" << endl;
+        cout << "|                                        |" << endl;
+        cout << "|            LISTAR VENDAS               |" << endl;
+        cout << "|________________________________________|" << endl;
+        cout << "\n"; //quebra 2 linhas
+        cout << setw(10) << "| CODIGO |" << setw(10) << " CODIGO PRODUTO |" << setw(10) << " CODIGO CLIENTE |" << setw(10) << " QUANTIDADE |" << setw(10) << " PRECO |" << setw(10) << " DATA |" << endl;
+        cout << "___________________________________________________________________________________________________________________________" << endl;
+		while (fread(&sell, sizeof(Venda), 1, arqSell) == 1){
+        cout << setw(10) << sell.codigo << setw(10) << sell.codigoProduto << setw(10) << sell.codigoCliente << setw(10) << sell.quantidade << setw(10) << sell.preco << endl;
+		}
+
+    fclose(arqSell); // N�o se esque�a de fechar o arquivo quando terminar.
 	} else {
     // A abertura do arquivo falhou.
     cerr << "Erro ao abrir o arquivo" << endl;
