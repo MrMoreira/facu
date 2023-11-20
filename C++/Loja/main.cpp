@@ -32,6 +32,16 @@ typedef struct {
     int codigo; //codigo do fornecedor
 } Fornecedor;
 
+typedef struct {
+    int codigo; //codigo do produto
+    string nome; //nome do produto
+    int quantidade; //quantidade de produtos
+    float precoV; //preco do produto de venda
+    float precoC; //preco do produto de compra
+    int codigoFornecedor; //codigo do fornecedor
+} Produto;
+
+void CadastroProduct();
 void ClientList();
 void ListarFornecedores();
 void CadastroCliente();
@@ -57,7 +67,7 @@ void menu(int opcao){
         CadastroCliente();
         break;
     case 2:
-        cout << "teste opcao 2";
+        CadastroProduct();
         break;
     case 3:
         CadastroFornecedor();
@@ -200,6 +210,7 @@ void ListarFornecedores(){
 }
 
 void ClientList(){
+
 	PCliente clients;
 	FILE* arqClients = fopen("clients.mr", "r");
 	if (arqClients != NULL) {
@@ -209,19 +220,111 @@ void ClientList(){
         cout << "|________________________________________|" << endl;
         cout << "\n"; //quebra 2 linhas
 		while (fread(&clients, sizeof(clients), 1, arqClients) == 1){
-        cout << "_______________________________________" << endl;
 		cout << "Codigo: " << clients.codigo << endl;
         cout << "Nome: " << clients.nome << endl;
         cout << "Endereco: " << clients.endereco << endl;
         cout << "Telefone: " << clients.telefone << endl;
         cout << "_______________________________________" << endl;
 		}
-    /*
-    string nome; //nome do cliente
-    string endereco; //endereco do cliente
-    string telefone; //telefone do cliente
-    int codigo; //codigo do cliente
-    */
+
+    fclose(arqClients); // N�o se esque�a de fechar o arquivo quando terminar.
+	} else {
+    // A abertura do arquivo falhou.
+    cerr << "Erro ao abrir o arquivo" << endl;
+	}
+}
+
+void CadastroProduct() {
+    system("cls");
+    cout << "__________________________________________" << endl;
+    cout << "|                                        |" << endl;
+    cout << "|           CADASTRAR PRODUTOS           |" << endl;
+    cout << "|________________________________________|" << endl;
+
+    Produto products;
+    long int cod;
+    int pV, pC, codF, qtd;
+    char op;
+
+    FILE* arqProduct = fopen("products.mr", "a"); // Abra o arquivo para anexar
+
+    if (arqProduct != NULL) {
+        do {
+
+
+            /*tydef struct {
+            int codigo; //codigo do produto
+            string nome; //nome do produto
+            int quantidade; //quantidade de produtos
+            float precoV; //preco do produto de venda
+            float precoC; //preco do produto de compra
+            int codigoFornecedor; //codigo do fornecedor
+            } Produto;*/
+
+            cout << "Codigo: ";
+            cin >> cod;
+            // Se o fornecedor nao existir, permita o cadastro
+            products.codigo = cod;
+            cin.ignore();
+
+            cout << " Nome: ";
+            getline(cin, products.nome);
+
+            cout << " Quantidade: ";
+            cin >> qtd;
+            products.quantidade = qtd;
+            
+            cout << " Preco de Venda: ";
+            cin >> pV;
+            products.precoV = pV;
+
+            cout << " Preco de Compra: ";
+            cin >> pC;
+            products.precoC = pC;
+
+            cout << " Codigo do Fornecedor: ";
+            cin >> codF;
+            products.codigoFornecedor = codF;
+
+            cout << "\n CONFIRMA CADASTRO? - <S> para confirmar: ";
+            cin >> op;
+
+            if (toupper(op) == 'S') {
+                // Use fwrite para escrever os dados no arquivo
+               	fwrite(&products, sizeof(Produto), 1, arqProduct);
+
+                cout << "Fornecedor cadastrado com sucesso!" << endl;
+            }
+
+            cout << "ADICIONAR OUTRO FORNECEDOR? - <S> para adicionar: ";
+            cin >> op;
+        } while (toupper(op) == 'S');
+
+        fclose(arqProduct); // Feche o arquivo quando terminar
+        menu(0);
+    } else {
+        cerr << "Erro ao abrir o arquivo" << endl;
+    }
+}
+
+void ProductList(){
+
+	PCliente clients;
+	FILE* arqClients = fopen("clients.mr", "r");
+	if (arqClients != NULL) {
+		cout << "__________________________________________" << endl;
+        cout << "|                                        |" << endl;
+        cout << "|            LISTAR PRODUTOS             |" << endl;
+        cout << "|________________________________________|" << endl;
+        cout << "\n"; //quebra 2 linhas
+		while (fread(&clients, sizeof(clients), 1, arqClients) == 1){
+		cout << "Codigo: " << clients.codigo << endl;
+        cout << "Nome: " << clients.nome << endl;
+        cout << "Endereco: " << clients.endereco << endl;
+        cout << "Telefone: " << clients.telefone << endl;
+        cout << "_______________________________________" << endl;
+		}
+
     fclose(arqClients); // N�o se esque�a de fechar o arquivo quando terminar.
 	} else {
     // A abertura do arquivo falhou.
