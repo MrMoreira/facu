@@ -37,10 +37,11 @@ void CadastroCliente();
 void CadastroFornecedor();
 
 void menu(int opcao){
-    cout << "=====================================" << endl;
-    cout << "===========----MENU----==============" << endl;
-    cout << "=====================================" << endl;
-    cout << "\n\n"; //quebra 2 linhas  
+    cout << "_______________________________________" << endl;
+    cout << "|                                     |" << endl;
+    cout << "|                MENU                 |" << endl;
+    cout << "|_____________________________________|" << endl;
+    cout << "\n"; //quebra 2 linhas  
     cout << "1 - Cadastrar Cliente" << endl;
     cout << "2 - Cadastrar Produto" << endl;
     cout << "3 - Cadastrar Fornecedor" << endl;
@@ -78,9 +79,10 @@ void menu(int opcao){
 
 void CadastroCliente() {
     system("cls");
-    cout << " -------------------------------------" << std::endl;
-    cout << " **** DIGITE OS DADOS DO FORNECEDOR ****" << std::endl;
-    cout << " -------------------------------------" << std::endl;
+    cout << "__________________________________________" << endl;
+    cout << "|                                        |" << endl;
+    cout << "|           CADASTRAR CLIENTES           |" << endl;
+    cout << "|________________________________________|" << endl;
 
     PCliente clients;
     long int cod;
@@ -121,6 +123,7 @@ void CadastroCliente() {
         } while (toupper(op) == 'S');
 
         fclose(arqClient); // Feche o arquivo quando terminar
+        menu(0);
     } else {
         cerr << "Erro ao abrir o arquivo" << endl;
     }
@@ -128,9 +131,11 @@ void CadastroCliente() {
 
 void CadastroFornecedor() {
     system("cls");
-    cout << " -------------------------------------" << std::endl;
-    cout << " **** DIGITE OS DADOS DO FORNECEDOR ****" << std::endl;
-    cout << " -------------------------------------" << std::endl;
+    cout << "__________________________________________" << endl;
+    cout << "|                                        |" << endl;
+    cout << "|     DIGITE OS DADOS DO FORNECEDOR      |" << endl;
+    cout << "|________________________________________|" << endl;
+    cout << "\n"; //quebra 2 linhas
 
     Fornecedor fornecedor;
     long int cod;
@@ -164,13 +169,12 @@ void CadastroFornecedor() {
             cout << "ADICIONAR OUTRO FORNECEDOR? - <S> para adicionar: ";
             cin >> op;
         } while (toupper(op) == 'S');
-
         fclose(arquivoFornecedor); // Feche o arquivo quando terminar
+        menu(0);
     } else {
         cerr << "Erro ao abrir o arquivo" << endl;
     }
 }
-
 
 void ListarFornecedores(){
 	Fornecedor fornecedor;
