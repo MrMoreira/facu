@@ -4,18 +4,6 @@
 #include <iomanip>
 using namespace std;
 
-FILE *PontProdutos;//declaração do ponteiro para o arquivo produtos
-FILE *PontFornecedor;//declaração do ponteiro para o arquivo fornecedor
-
-
-typedef struct {
-    string loja; //nome da loja
-    string produto; //nome do produto
-    int quantidade; //quantidade de produtos
-    float preco; //preco do produto
-    int codigo; //codigo do produto
-    int codigoProduto; //codigo do produto
-}PLoja;
 
 typedef struct {
     string nome; //nome do cliente
