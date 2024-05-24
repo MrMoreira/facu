@@ -1,0 +1,38 @@
+/* Theme Name: MrMoreira Default Colors */
+/*Importação de cores root*/
+@import url('colors.css');
+
+
+
+
+/*Centralizar formulario*/
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: blueviolet;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+form input {
+    border-radius: 4px;
+    height: 25px;
+    
+}
