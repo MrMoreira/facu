@@ -11,11 +11,11 @@ $isLoggedIn = isset($_SESSION['logado']) && $_SESSION['logado'] === true;
               <ul>   <?php if ($isLoggedIn): ?>
                      <li><a href="/mrm/pages/ranking.php">Ranking</a></li>
                      <li><a href="/mrm/pages/criar_att.php">Criar ATT</a></li>
-                     <li ><a href="#">Outros</a></li>
+                     <li ><a href="/mrm/pages/fnd.php">Outros</a></li>
                      <?php else: ?>
-                     <li><a href="/mrm/">Home</a></li>
-                     <li><a href="/mrm/pages/ranking.php">Ranking</a></li>
-                     <li><a href="#">Others</a></li>
+                     <li><a href="/mrm/pages/fnd.php">Home</a></li>
+                     <li><a href="/mrm/pages/fnd.php">vamos logar?</a></li>
+                     <li><a href="/mrm/pages/fnd.php">Others</a></li>
                      <?php endif; ?>
               </ul>
        </div>
@@ -26,7 +26,7 @@ $isLoggedIn = isset($_SESSION['logado']) && $_SESSION['logado'] === true;
                                    <?php echo "Olá " .$_SESSION['nome']; ?>
                                    <a href="/mrm/pages/login.php" hidden></a>
                             </li>
-                            <li><a href="#">Perfil</a></li>
+                            <li><a href="/mrm/pages/fnd.php">Perfil</a></li>
                      <?php else: ?>
                      <!-- Navbar para visitantes -->
                      <li><a href="/mrm/pages/login.php">Login</a></li>

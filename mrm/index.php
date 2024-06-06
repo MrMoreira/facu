@@ -15,21 +15,25 @@
     <?php include './includes/navbar.php' ?>
 
     <?php 
+        if ($isLoggedIn) {
            echo '<form action="" method="post">';
            echo '<button type="submit" name="deslogar">Deslogar script</button>';
            echo '</form>';
            echo session_id();
-           echo $_SESSION['nome'];
-           echo $_SESSION['email'];
+
 
            // Verifica se o botão foi clicado e chama a função
+           
            if (isset($_POST['deslogar'])) {
                 unset($_SESSION['email'],$_SESSION['senha'] );
                 session_destroy();
                 echo "Deslogado com sucesso!";
-                
-                
-            };       
+                header('Location: /mrm/');
+                exit;
+            }
+        } else {
+            echo "<p>Você não está logado!</p>";
+        }
     
     ?>
 </body>

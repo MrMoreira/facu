@@ -1,9 +1,9 @@
 <?php
 class Database {
-    private $host = '144.22.176.81';
+    private $host = 'XXXXX';
     private $db_name = 'mrm';
-    private $username = 'MrMoreira';
-    private $password = 'Caique100.';
+    private $username = 'XXXX';
+    private $password = 'XXXXX';
     //private $username = 'mrmoreira';
     //private $password = 'Morrice123';
     private $conn;
