@@ -1,9 +1,11 @@
 <?php
 class Database {
-    private $host = 'localhost';
+    private $host = '144.22.176.81';
     private $db_name = 'mrm';
-    private $username = 'mrmoreira';
-    private $password = 'Morrice123';
+    private $username = 'MrMoreira';
+    private $password = 'Caique100.';
+    //private $username = 'mrmoreira';
+    //private $password = 'Morrice123';
     private $conn;
 
     public function connect() {
@@ -18,4 +20,6 @@ class Database {
         return $this->conn;
     }
 }
+
+
 ?>

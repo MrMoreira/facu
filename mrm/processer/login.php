@@ -21,7 +21,18 @@
             {
                 if($stmt->rowCount() > 0)
                 {
-                    echo "Login realizado com sucesso!";
+                    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+                    session_start();
+                    $_SESSION['logado'] = true;
+                    $_SESSION['nome'] = $user['nome'];
+                    $_SESSION['sobrenome'] = $user['sobrenome'];
+                    $_SESSION['ra'] = $user['ra'];
+                    $_SESSION['email'] = $user['email'];
+                    $_SESSION['adm'] = $user['adm'];
+                    header('Location: /mrm/');
+                    exit;
+
+                    //echo "Login realizado com sucesso!";
                 }
                 else
                 {

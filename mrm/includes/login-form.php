@@ -14,7 +14,7 @@
                     <label><input type="checkbox" name="" id=""> Lembre de mim</label>
                     <a href="#">Esqueceu a senha?</a>
                 </div>
-                <button type="submit" name="btn-send" class="btn-send">Cadastrar</button>
+                <button type="submit" name="btn-send" class="btn-send">Login</button>
 
                 <div class="login-link">
                     <p>

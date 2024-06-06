@@ -32,6 +32,8 @@
             if($stmt->execute())
             {
                 echo "Cadastro realizado com sucesso!";
+                header('Location: /mrm/');
+                exit;
             }
             else
             {
