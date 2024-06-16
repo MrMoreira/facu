@@ -14,11 +14,4 @@
 ! Number of entries: 8
 !
 
-||play.google.com/log
-||google.com/gen_204?
-||youtube.com/api/stats/qoe?
-||play.google.com/log^
-||youtube.com/youtubei/v1/log_event^
-||static.doubleclick.net/instream/ad_status.js^
-||googleads.g.doubleclick.net/pagead/id^
-||youtube.com/pcs/activeview^
+click.justwatch.com
