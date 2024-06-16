@@ -1,0 +1,21 @@
+!
+! Title: MrMoreira Blocklist
+! Description: Ads and other blocks
+! Homepage: https://github.com/hagezi/dns-blocklists
+! Last modified: 2024-06-16T04:06:02.134Z
+!
+! Compiled by @MrMoreira v0.0.1
+!
+!
+! Source name: MrMoreira Blocklist
+! Source: 
+!
+! Title: MrMoreira Blocklist
+! Number of entries: 193167
+!
+
+||play.google.com/log
+||google.com/gen_204?
+||google.com/gen_204?
+||youtube.com/api/stats/qoe?
+||youtube.com/youtubei/v1/log_event?
