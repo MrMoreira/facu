@@ -16,6 +16,9 @@
 
 ||play.google.com/log
 ||google.com/gen_204?
-||google.com/gen_204?
 ||youtube.com/api/stats/qoe?
-||youtube.com/youtubei/v1/log_event?
+||play.google.com/log^
+||youtube.com/youtubei/v1/log_event^
+||static.doubleclick.net/instream/ad_status.js^
+||googleads.g.doubleclick.net/pagead/id^
+||youtube.com/pcs/activeview^
