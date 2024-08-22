@@ -1,7 +1,37 @@
-<section>
-    <h1>Pagina em construcao</h1>
-    <p>Essa pagina ainda esta em construcao, por favor volte mais tarde.</p>
-    <p>Estamos trabalhando para trazer a melhor experiencia para voce.</p>
-    <p>Volte mais tarde.</p>
-    <p>Atenciosamente, equipe de desenvolvimento.</p>
-</section>
+<div class="center">
+        <div class="wrapper">
+            <form action="re" method="post" >
+                <h1>Cadastrar Itens</h1>
+                <div class="input-box">
+                    <input type="text" name="nome" placeholder="Nome" required>
+                    <i class='bx bxs-user'></i>
+                </div>
+                <div class="input-box">
+                    <input type="text" name="descriao" placeholder="Descricao" required>
+                    <i class='bx bx-collapse-alt'></i>
+                </div>
+                <div class="input-box">
+                    <input type="text" name="tipo" placeholder="Tipo" required>
+                    <i class='bx bx-collapse-alt'></i>
+                </div>
+                <div class="input-box">
+                    <input type="email" name="Modelo" placeholder="Modelo" required>
+                    <i class='bx bxl-gmail'></i>
+                </div>
+                <div hidden class="remember-forgot">
+                    <label  hidden ><input type="checkbox" name="" id="" > Lembre de mim</label>
+                    <a href="#" hidden>Esqueceu a senha?</a>
+                </div>
+                <button type="submit" class="btn-send">Enviar</button>
+
+                <div class="login-link" hidden>
+                    <p>
+                        Já tem uma conta?
+                        <a href="#">Entrar</a>
+                    </p>
+
+                </div>
+
+            </form>
+        </div>
+    </div>

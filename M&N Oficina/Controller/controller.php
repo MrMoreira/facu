@@ -1,9 +1,11 @@
 <?php
-
 require "Model/model.php";
 require "View/view.php";
 
+// Agora você pode usar $conn para executar consultas SQL
 class Controller {
+    private $model;
+    private $view;
 
     public function __construct(){
         $this->model = new Model();
