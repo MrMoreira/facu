@@ -1,8 +1,5 @@
-/* Theme Name: MrMoreira Default Colors */
-/*Importação de cores root*/
+/* Importação de cores root */
 @import url('colors.css');
-
-
 
 .center {
     display: flex;
@@ -12,7 +9,6 @@
     background-size: cover;
     background-position: center;
     padding: 4.8% 0%;*/
-    
 }
 
 .wrapper {
@@ -38,26 +34,31 @@
     width: 100%;
     height: 50px;
     margin: 30px 0;
-    
 }
 
-.input-box input {
+.input-box input, .input-box select {
     width: 100%;
     height: 100%;
     background: transparent;
     border: none;
     outline: none;
-    /*border: 2px solid rgba(255, 255, 255, .2);*/
     border: 2px solid var(--another-dark);
     border-radius: 40px;
     font-size: 16px;
     color: var(--another-dark);
-    padding: 20px 45px 20px 20px;
-
+    padding: 10px 45px 10px 20px; /* Ajuste o padding aqui */
+    box-sizing: border-box; /* Garante que o padding não cause o texto ser cortado */
+    -webkit-appearance: none; /* Remove a aparência padrão do navegador */
+    -moz-appearance: none; /* Remove a aparência padrão do navegador */
+    appearance: none; /* Remove a aparência padrão do navegador */
 }
 
-.input-box input::placeholder {
-    color: var(--another-dark)
+.input-box select {
+    padding-right: 50px; /* Espaço para a seta de seleção */
+}
+
+.input-box input::placeholder, .input-box select option {
+    color: var(--another-dark);
 }
 
 .input-box i {
@@ -66,7 +67,6 @@
     top: 50%;
     transform: translateY(-50%);
     font-size: 20px;
-    
 }
 
 .wrapper .remember-forgot {
@@ -74,8 +74,6 @@
     justify-content: space-between;
     font-size: 14.5px;
     margin: -15px 0 15px;
-
-
 }
 
 .remember-forgot label input {
@@ -106,22 +104,22 @@
     font-weight: 600;
 }
 
-.wrapper .login-link{
+.wrapper .login-link {
     font-size: 14.5px;
     text-align: center;
     margin: 20px 0 15px;
 }
 
-.login-link o a {
+.login-link a {
     color: var(--another-dark);
     text-decoration: none;
     font-weight: 600;
 }
 
-.login-link p a:hover {
+.login-link a:hover {
     text-decoration: underline;
 }
 
 .input-box input[type=number] {
     -moz-appearance: textfield;
-  }
+}
