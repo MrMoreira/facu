@@ -17,16 +17,14 @@ class View{
         require "Assets/templates/citens.php";
     } // Ainda em construcao pagina para listagem de itens.
 
-    public function pedidos(){
+    public function pedidos($pedidos){
        echo "<link rel='stylesheet' href='Assets/css/pedidos.css'>";
-       echo "<script src='Assets/js/pedidos.js'></script>";
-       require "Assets/templates/pedidos.php";
+        echo $pedidos;
     }
 
-    public function itens(){
+    public function itens($itens){
         echo "<link rel='stylesheet' href='Assets/css/itens.css'>";
-        echo "<script src='Assets/js/itens.js'></script>";
-        require "Assets/templates/itens.php";
+        echo $itens;
     }
 
 }

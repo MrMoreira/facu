@@ -25,11 +25,13 @@ class Controller {
     }
 
     public function pedidos(){
-        $this->view->pedidos();
+        $pedidos = $this->model->listapedidos();
+        $this->view->pedidos($pedidos);
     }
 
     public function itens(){
-        $this->view->itens();
+        $itens = $this->model->listaitens();
+        $this->view->itens($itens);
     }
 
 } // Chave de fechamento na mesma linha
