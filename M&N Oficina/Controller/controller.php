@@ -24,5 +24,13 @@ class Controller {
         $this->view->citens();
     }
 
+    public function pedidos(){
+        $this->view->pedidos();
+    }
+
+    public function itens(){
+        $this->view->itens();
+    }
+
 } // Chave de fechamento na mesma linha
 ?>

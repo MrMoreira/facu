@@ -8,6 +8,6 @@
     // Agora você pode chamar os métodos do objeto
     //$controller->monta_pagina_incial();
     $controller->navbar();
-    $controller->test();
+    $controller->pedidos();
     
 ?>

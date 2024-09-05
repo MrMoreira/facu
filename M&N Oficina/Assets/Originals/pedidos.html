@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos da Oficina - Design Moderno</title>
+    <style>
+        :root {
+            --main-color: #08E0E9;
+            --text-color: #0f172a;
+            --another-dark: #161718;
+            --blanco-color: #ffff;
+            --cinza: #d8d8d88e;
+        }
+
+        .sala {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--blanco-color);
+            color: var(--text-color);
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .sala h1 {
+            color: var(--another-dark);
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .sala .table-container {
+            background-color: var(--blanco-color);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .sala table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        .sala th, .sala td {
+            padding: 15px;
+            text-align: left;
+        }
+
+        .sala th {
+            background-color: var(--main-color);
+            color: var(--blanco-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+        }
+
+        .sala tr {
+            transition: background-color 0.3s ease;
+        }
+
+        .sala tr:nth-child(even) {
+            background-color: var(--cinza);
+        }
+
+        .sala tr:hover {
+            background-color: rgba(8, 224, 233, 0.1);
+        }
+
+        .sala .status {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sala .pendente {
+            background-color: #FFA500;
+            color: var(--blanco-color);
+        }
+
+        .sala .em-andamento {
+            background-color: var(--main-color);
+            color: var(--blanco-color);
+        }
+
+        .sala .concluido {
+            background-color: #2ecc71;
+            color: var(--blanco-color);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .sala tbody tr {
+            animation: fadeIn 0.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        .sala tbody tr:nth-child(1) { animation-delay: 0.1s; }
+        .sala tbody tr:nth-child(2) { animation-delay: 0.2s; }
+        .sala tbody tr:nth-child(3) { animation-delay: 0.3s; }
+        .sala tbody tr:nth-child(4) { animation-delay: 0.4s; }
+        .sala tbody tr:nth-child(5) { animation-delay: 0.5s; }
+
+        @media (max-width: 600px) {
+            .sala table, .sala tr, .sala td {
+                display: block;
+            }
+
+            .sala tr {
+                margin-bottom: 15px;
+            }
+
+            .sala td {
+                text-align: right;
+                padding-left: 50%;
+                position: relative;
+            }
+
+            .sala td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 6px;
+                width: 45%;
+                text-align: left;
+                font-weight: bold;
+            }
+
+            .sala th {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sala">
+        <h1>Pedidos da Oficina</h1>
+        <div class="table-container">
+            <table id="pedidosTable">
+                <thead>
+                    <tr>
+                        <th>Nº do Pedido</th>
+                        <th>Cliente</th>
+                        <th>Serviço</th>
+                        <th>Data de Entrada</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Os dados serão inseridos aqui pelo JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const pedidos = [
+            { numero: "001", cliente: "João Silva", servico: "Troca de óleo", data: "2024-09-01", status: "Concluído" },
+            { numero: "002", cliente: "Maria Santos", servico: "Alinhamento", data: "2024-09-02", status: "Em andamento" },
+            { numero: "003", cliente: "Pedro Oliveira", servico: "Revisão geral", data: "2024-09-03", status: "Pendente" },
+            { numero: "004", cliente: "Ana Rodrigues", servico: "Troca de pneus", data: "2024-09-04", status: "Concluído" },
+            { numero: "005", cliente: "Carlos Ferreira", servico: "Reparo no motor", data: "2024-09-05", status: "Em andamento" }
+        ];
+
+        function gerarLinhasTabela() {
+            const tbody = document.querySelector("#pedidosTable tbody");
+            
+            pedidos.forEach(pedido => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+                    <td data-label="Nº do Pedido">${pedido.numero}</td>
+                    <td data-label="Cliente">${pedido.cliente}</td>
+                    <td data-label="Serviço">${pedido.servico}</td>
+                    <td data-label="Data de Entrada">${pedido.data}</td>
+                    <td data-label="Status"><span class="status ${pedido.status.toLowerCase().replace(' ', '-')}">${pedido.status}</span></td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        window.onload = gerarLinhasTabela;
+    </script>
+</body>
+</html>

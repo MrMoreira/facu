@@ -3,7 +3,7 @@
 require_once 'config/Database.php';
 
 class Model{
-    private $pdo;
+    /*private $pdo;
 
     public function __construct()
     {
@@ -30,6 +30,6 @@ class Model{
         }
 
         return $stmt->execute();
-    }
+    }*/
 }
 ?>

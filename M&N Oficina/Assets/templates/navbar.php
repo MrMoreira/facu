@@ -4,7 +4,7 @@
               <ul>
                 <li><a href="/MVC/">Home</a></li>
                 <li><a href="/MVC/pedidos.php">Pedidos</a></li>
-                <li><a href="">Itens</a></li>
+                <li><a href="/MVC/itens.php">Itens</a></li>
               </ul>
        </div>
        <div class="navlogin">

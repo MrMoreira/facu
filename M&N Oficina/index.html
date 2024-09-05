@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M&N Oficina - Excelência em Serviços Automotivos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --main-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --dark-color: #34495e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+        }
+
+        .container {
+            max-width: 50%;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.pexels.com/photos/3807386/pexels-photo-3807386.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.7);
+            animation: zoomInOut 20s infinite alternate;
+        }
+
+        @keyframes zoomInOut {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: var(--light-color);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--light-color);
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: fadeInUp 1s ease-out 1s both;
+        }
+
+        .btn:hover {
+            background-color: var(--main-color);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--dark-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--main-color);
+            margin: 20px auto 0;
+        }
+
+        .services {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .service-card {
+            flex-basis: calc(33.333% - 20px);
+            background-color: var(--light-color);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-card img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--main-color);
+        }
+
+        .about {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .about-content {
+            flex-basis: 50%;
+        }
+
+        .about-image {
+            flex-basis: 45%;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .about-image img {
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .testimonials {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 100px;
+            height: 100px;
+            background-color: var(--main-color);
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+
+        .testimonials::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 100px;
+            height: 100px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            padding: 20px;
+        }
+
+        .testimonial p {
+            font-style: italic;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--main-color);
+        }
+
+        .cta {
+            text-align: center;
+            background-color: var(--main-color);
+            color: var(--light-color);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.pexels.com/photos/3807811/pexels-photo-3807811.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            filter: grayscale(100%);
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .cta .btn {
+            background-color: var(--light-color);
+            color: var(--main-color);
+            font-size: 1.2rem;
+            padding: 15px 30px;
+            position: relative;
+        }
+
+        .cta .btn:hover {
+            background-color: var(--accent-color);
+            color: var(--light-color);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                max-width: 90%;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .service-card {
+                flex-basis: calc(50% - 20px);
+            }
+
+            .about {
+                flex-direction: column;
+            }
+
+            .about-content, .about-image {
+                flex-basis: 100%;
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .service-card {
+                flex-basis: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>M&N Oficina</h1>
+                <p>Excelência em serviços automotivos</p>
+                <a href="#" class="btn">Agende um Serviço</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Nossos Serviços</h2>
+                <div class="services">
+                    <div class="service-card">
+                        <img src="https://img.icons8.com/ios-filled/100/000000/car-service.png" alt="Manutenção Preventiva">
+                        <h3>Manutenção Preventiva</h3>
+                        <p>Cuidados essenciais para manter seu veículo em perfeitas condições.</p>
+                    </div>
+                    <div class="service-card">
+                        <img src="https://img.icons8.com/ios-filled/100/000000/engine.png" alt="Reparos Mecânicos">
+                        <h3>Reparos Mecânicos</h3>
+                        <p>Soluções precisas para todos os problemas mecânicos do seu automóvel.</p>
+                    </div>
+                    <div class="service-card">
+                        <img src="https://img.icons8.com/ios-filled/100/000000/car-dashboard.png" alt="Diagnóstico Eletrônico">
+                        <h3>Diagnóstico Eletrônico</h3>
+                        <p>Tecnologia avançada para identificar e resolver problemas eletrônicos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section about">
+            <div class="container">
+                <div class="about-content">
+                    <h2 class="section-title">Sobre a M&N Oficina</h2>
+                    <p>Há mais de duas décadas, a M&N Oficina tem sido sinônimo de excelência e confiabilidade no setor automotivo. Nossa equipe altamente qualificada está comprometida em fornecer serviços de primeira classe para o seu veículo.</p>
+                    <p>Utilizamos equipamentos de última geração e peças de alta qualidade para garantir a segurança, o desempenho e a longevidade do seu automóvel.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.pexels.com/photos/4489734/pexels-photo-4489734.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Equipe M&N Oficina">
+                </div>
+            </div>
+        </section>
+
+        <section class="section testimonials">
+            <div class="container">
+                <h2 class="section-title">O que nossos clientes dizem</h2>
+                <div class="testimonial-slider">
+                    <div class="testimonial">
+                        <p>"Serviço excepcional! A equipe da M&N Oficina é extremamente profissional e competente. Meu carro nunca esteve em melhores mãos."</p>
+                        <span class="testimonial-author">- Carlos Ferreira</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="container">
+                <h2>Pronto para experimentar o melhor serviço automotivo?</h2>
+                <a href="#" class="btn">Agende sua visita agora</a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        function handleScrollAnimation() {
+            const elements = document.querySelectorAll('.service-card, .about-content, .about-image, .testimonial');
+            elements.forEach(el => {
+                if (isElementInViewport(el)) {
+                    el.style.animation = 'fadeInUp 1s ease-out forwards';
+                }
+            });
+        }
+
+        window.addEventListener('scroll', handleScrollAnimation);
+        window.addEventListener('load', handleScrollAnimation);
+    </script>
+</body>
+</html>
