@@ -1,0 +1,101 @@
+ID,Frase do Usuário,Setor
+1,Tem como reservar esse produto?,Vendas
+2,Preciso da segunda via da nota fiscal.,Fiscal
+3,Qual o telefone do SAC?,Informações
+4,A nota fiscal veio com um valor errado.,Fiscal
+5,Quero comprar mais unidades desse item.,Vendas
+6,Quero falar com o meu vendedor.,Vendedor
+7,Quero alterar os dados da nota fiscal.,Fiscal
+8,Vocês têm desconto para atacado?,Vendas
+9,Pode pedir para o vendedor me retornar?,Vendedor
+10,Esse item tem em outras cores?,Produtos
+11,Pode pedir para o vendedor me retornar?,Vendedor
+12,"Recebi o tamanho errado, posso trocar?",Troca
+13,Vocês atendem no fim de semana?,Informações
+14,Qual o prazo de entrega para minha região?,Informações
+15,Não sei qual setor pode me ajudar.,Outros
+16,Esse item tem em outras cores?,Produtos
+17,Gostaria de enviar uma sugestão para a empresa.,Outros
+18,Já paguei e o sistema não atualizou.,Pagamentos
+19,Já paguei e o sistema não atualizou.,Pagamentos
+20,Como funciona a política de troca?,Troca
+21,Posso dividir o pagamento no cartão?,Pagamentos
+22,Me chama o representante da minha região.,Vendedor
+23,Quais são os horários de atendimento?,Informações
+24,"Recebi o tamanho errado, posso trocar?",Troca
+25,Não sei qual setor pode me ajudar.,Outros
+26,Minha entrega atrasou e ninguém me avisou.,Reclamações
+27,Gostaria do número do meu representante.,Vendedor
+28,Preciso de ajuda com um assunto que não está listado.,Outros
+29,Como entro em contato com o vendedor responsável?,Vendedor
+30,Fui mal atendido por um dos funcionários.,Reclamações
+31,Gostaria de enviar uma sugestão para a empresa.,Outros
+32,Não recebi a nota fiscal da minha compra.,Fiscal
+33,Esse produto está disponível para venda?,Vendas
+34,Não sei qual setor pode me ajudar.,Outros
+35,Preciso de ajuda com um assunto que não está listado.,Outros
+36,Fui mal atendido por um dos funcionários.,Reclamações
+37,Quero trocar um produto que veio errado.,Troca
+38,Posso trocar o item na loja física?,Troca
+39,Como entro em contato com o vendedor responsável?,Vendedor
+40,Como solicito a nota fiscal eletrônica?,Fiscal
+41,Quero falar com o meu vendedor.,Vendedor
+42,Preciso de ajuda com um assunto que não está listado.,Outros
+43,Não recebi a confirmação de pagamento.,Pagamentos
+44,Como solicito a nota fiscal eletrônica?,Fiscal
+45,Quero comprar mais unidades desse item.,Vendas
+46,Qual a voltagem desse aparelho?,Produtos
+47,Posso dividir o pagamento no cartão?,Pagamentos
+48,Quero trocar um produto que veio errado.,Troca
+49,O produto é original?,Produtos
+50,Qual o telefone do SAC?,Informações
+51,Não sei qual setor pode me ajudar.,Outros
+52,Não recebi a confirmação de pagamento.,Pagamentos
+53,Pode pedir para o vendedor me retornar?,Vendedor
+54,Gostaria de enviar uma sugestão para a empresa.,Outros
+55,Como solicito a nota fiscal eletrônica?,Fiscal
+56,Quais são os horários de atendimento?,Informações
+57,"Quero fechar um pedido grande, com quem falo?",Vendas
+58,Quero alterar os dados da nota fiscal.,Fiscal
+59,Qual o telefone do SAC?,Informações
+60,Preciso da segunda via da nota fiscal.,Fiscal
+61,Qual é a forma de pagamento aceita?,Pagamentos
+62,Vocês atendem no fim de semana?,Informações
+63,Quais são os horários de atendimento?,Informações
+64,Quero comprar mais unidades desse item.,Vendas
+65,O produto é original?,Produtos
+66,Como funciona a política de troca?,Troca
+67,Tenho uma dúvida fora do padrão.,Outros
+68,A nota fiscal veio com um valor errado.,Fiscal
+69,Não recebi a confirmação de pagamento.,Pagamentos
+70,Quero falar com o meu vendedor.,Vendedor
+71,"O boleto venceu, posso gerar outro?",Pagamentos
+72,Posso trocar o item na loja física?,Troca
+73,Como entro em contato com o suporte geral?,Outros
+74,Me chama o representante da minha região.,Vendedor
+75,Como entro em contato com o suporte geral?,Outros
+76,Não sei qual setor pode me ajudar.,Outros
+77,Não sei qual setor pode me ajudar.,Outros
+78,Quero fazer uma reclamação sobre o serviço.,Reclamações
+79,Posso trocar o item na loja física?,Troca
+80,Tem como reservar esse produto?,Vendas
+81,Preciso da segunda via da nota fiscal.,Fiscal
+82,"Recebi o tamanho errado, posso trocar?",Troca
+83,Onde fica a loja mais próxima?,Informações
+84,Não sei qual setor pode me ajudar.,Outros
+85,Me chama o representante da minha região.,Vendedor
+86,"Recebi o tamanho errado, posso trocar?",Troca
+87,Qual o prazo para solicitar troca?,Troca
+88,Esse produto está disponível para venda?,Vendas
+89,Preciso de ajuda com um assunto que não está listado.,Outros
+90,Fui mal atendido por um dos funcionários.,Reclamações
+91,Já paguei e o sistema não atualizou.,Pagamentos
+92,Esse item tem em outras cores?,Produtos
+93,Onde fica a loja mais próxima?,Informações
+94,Quero trocar um produto que veio errado.,Troca
+95,Qual é a forma de pagamento aceita?,Pagamentos
+96,Quais são as especificações técnicas do produto?,Produtos
+97,Como entro em contato com o suporte geral?,Outros
+98,Posso trocar o item na loja física?,Troca
+99,Fui mal atendido por um dos funcionários.,Reclamações
+100,O produto chegou quebrado.,Reclamações
